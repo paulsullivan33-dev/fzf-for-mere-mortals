@@ -1,0 +1,8 @@
+$ grep -rin cinnamon .
+./documents/recipe-pancakes.txt:3:A pinch of cinnamon in the batter.
+./documents/shopping-list.txt:3:Cinnamon, sugar, lemons.
+./documents/holiday-plan.txt:4:juice with cinnamon sticks in the evening.
+$ grep -rin cinnamon . | fzf --filter=shopping
+./documents/shopping-list.txt:3:Cinnamon, sugar, lemons.
+$ grep -rin cinnamon . | fzf --filter='sticks'
+./documents/holiday-plan.txt:4:juice with cinnamon sticks in the evening.

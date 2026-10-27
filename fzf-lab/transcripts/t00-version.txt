@@ -1,0 +1,4 @@
+$ fzf --version
+0.74.5 (c0a193e0)
+$ find fzf-lab/sample-tree -type f | wc -l
+27

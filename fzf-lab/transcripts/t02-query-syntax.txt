@@ -1,0 +1,27 @@
+$ find . -type f | sort | fzf --filter='^annual'
+  [exit 1]
+$ find . -type f | sort | fzf --filter='^./documents/annual'
+./documents/annual-report-2023.txt
+./documents/annual-report-2024.txt
+$ find . -type f | sort | fzf --filter='.mp3$'
+./music/quiet-river.mp3
+./music/the-blue-door.mp3
+./music/highway-lights.mp3
+./music/midnight-train.mp3
+./music/summer-postcard.mp3
+./music/rain-on-the-roof.mp3
+./music/dancing-in-the-kitchen.mp3
+./music/song-for-a-winter-morning.mp3
+$ find . -type f | sort | fzf --filter='!mp3' | wc -l
+19
+$ find . -type f | sort | fzf --filter='report | recipe'
+./documents/recipe-pancakes.txt
+./documents/recipe-tomato-soup.txt
+./documents/annual-report-2023.txt
+./documents/annual-report-2024.txt
+$ find . -type f | sort | fzf --filter='annual 2024'
+./documents/annual-report-2024.txt
+$ find . -type f | sort | fzf --filter=Annual
+  [exit 1]
+$ find . -type f | sort | fzf --exact --filter=anrp
+  [exit 1]

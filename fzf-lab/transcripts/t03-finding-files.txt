@@ -1,0 +1,13 @@
+$ find . -type f | fzf --filter='documents invoice'
+./documents/invoice-1042.txt
+./documents/invoice-1043.txt
+$ find . -type f -name '*.mp3' | fzf --filter=river
+./music/quiet-river.mp3
+$ find . -type f | fzf --delimiter / --nth -1 --filter=documents
+  [exit 1]
+$ find . -type f | fzf --filter=documents | wc -l
+14
+$ find . -type f | fzf --delimiter / --nth -1 --filter=bridge
+./photos/the-old-bridge.jpg
+$ find . -type d | sort | fzf --filter=music
+./music

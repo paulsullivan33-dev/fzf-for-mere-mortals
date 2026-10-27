@@ -1,0 +1,16 @@
+$ find . -type f | sort | fzf --filter=report --print-query
+report
+./documents/annual-report-2023.txt
+./documents/annual-report-2024.txt
+$ find . -type f | sort | fzf --filter=zzzz --print-query
+zzzz
+  [exit 1]
+$ find . -type f | sort | FZF_DEFAULT_OPTS=--exact fzf --filter=anrp
+  [exit 1]
+$ find . -type f | sort | fzf --filter=anrp | wc -l
+5
+# fzf uses FZF_DEFAULT_COMMAND only when its input is a
+# terminal, so this run was made under a pseudo-terminal:
+$ FZF_DEFAULT_COMMAND='find . -type f' fzf --filter=invoice
+./documents/invoice-1042.txt
+./documents/invoice-1043.txt

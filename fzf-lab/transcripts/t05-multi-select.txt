@@ -1,0 +1,13 @@
+$ find . -type f | sort | fzf --multi --filter=recipe
+./documents/recipe-pancakes.txt
+./documents/recipe-tomato-soup.txt
+$ find . -type f | sort | fzf --multi --filter='report | recipe'
+./documents/recipe-pancakes.txt
+./documents/recipe-tomato-soup.txt
+./documents/annual-report-2023.txt
+./documents/annual-report-2024.txt
+$ find . -type f | sort | fzf --multi --filter='report | recipe' | wc -l
+4
+$ find . -type f | sort | fzf --multi --filter=invoice --print0 | tr '\0' '\n'
+./documents/invoice-1042.txt
+./documents/invoice-1043.txt

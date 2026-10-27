@@ -1,0 +1,30 @@
+site_name: fzf for Mere Mortals
+site_description: A fuzzy finder for the terminal. Feed fzf a list, type a few letters, and get back the line you meant, at the prompt, in your shell history, and inside your own scripts.
+site_url: https://paulsullivan33-dev.github.io/fzf-for-mere-mortals/
+copyright: 'Part of <a href="https://paulsullivan33-dev.github.io/mere-mortals/">For Mere Mortals</a> · Text <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, code MIT'
+
+# Guides live at the repo root (nice for GitHub browsing).
+# The deploy workflow copies them into docs/ before building.
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - What fzf Is: what-fzf-is.md
+  - The Moving Parts: the-moving-parts.md
+  - Installing fzf: installing-fzf.md
+  - Your First Search: your-first-search.md
+  - Finding Files: finding-files.md
+  - Command History with Ctrl-R: command-history.md
+  - Searching Inside Files: searching-inside-files.md
+  - fzf in Scripts: fzf-in-scripts.md
+  - Previews: previews.md
+  - Multi-Select and Acting on Choices: multi-select-and-acting.md
+  - Options and FZF_DEFAULT_OPTS: options-and-defaults.md
+  - Shell Integration and Key Bindings: shell-integration.md
+  - Recipes: recipes.md
+  - The Neighbours: the-neighbours.md
+  - Limits: limits.md
+  - Troubleshooting: troubleshooting.md
+  - Glossary: glossary.md
+  - Writing Criteria: criteria.md

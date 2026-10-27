@@ -1,0 +1,21 @@
+$ fzf --bash | head -n 8
+### key-bindings.bash ###
+#     ____      ____
+#    / __/___  / __/
+#   / /_/_  / / /_
+#  / __/ / /_/ __/
+# /_/   /___/_/ key-bindings.bash
+#
+# - $FZF_CTRL_T_COMMAND
+$ fzf --bash | wc -l
+939
+$ bash --noprofile --norc -ic 'eval "$(fzf --bash)"; type -t __fzf_history__ __fzf_cd__ fzf-file-widget' 2>/dev/null
+function
+function
+function
+$ fzf --zsh | head -n 2
+### key-bindings.zsh ###
+#     ____      ____
+$ fzf --fish | head -n 2
+### key-bindings.fish ###
+#     ____      ____

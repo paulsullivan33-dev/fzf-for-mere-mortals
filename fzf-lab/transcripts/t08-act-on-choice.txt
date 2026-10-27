@@ -1,0 +1,22 @@
+$ ./scripts/pick-a-recipe.sh
+Picked: ./documents/recipe-pancakes.txt
+-----
+Pancakes
+200 g flour, 2 eggs, 300 ml milk.
+A pinch of cinnamon in the batter.
+Fry small ladles, two minutes a side.
+$ ./scripts/pick-a-recipe.sh soup
+Picked: ./documents/recipe-tomato-soup.txt
+-----
+Tomato soup
+Two tins of tomatoes, one onion, garlic.
+Simmer twenty minutes, blend, add basil.
+$ ./scripts/pick-a-recipe.sh zzzz
+no recipe matched 'zzzz'
+  [exit 1]
+$ ./scripts/word-count-of-chosen.sh report
+./documents/annual-report-2023.txt: 20 words
+./documents/annual-report-2024.txt: 20 words
+$ ./scripts/word-count-of-chosen.sh budget
+./documents/budget-2024.txt: 15 words
+./documents/budget-2025.txt: 15 words

@@ -1,0 +1,14 @@
+$ find . -type f | sort | fzf --filter=report > /dev/null
+  [exit 0]
+$ find . -type f | sort | fzf --filter=zzzz > /dev/null
+  [exit 1]
+$ find . -type f | sort | fzf --filter=zzzz --exit-0 > /dev/null
+  [exit 1]
+$ find . -type f | sort | fzf --filter=zzzz --print-query
+zzzz
+  [exit 1]
+$ printf '' | fzf --filter=x
+  [exit 1]
+$ fzf --frobnicate < /dev/null
+unknown option: --frobnicate
+  [exit 2]

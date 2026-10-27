@@ -1,0 +1,99 @@
+fzf — the distilled commands
+====================================================================
+Placeholders: <query> is a query of yours; <file> a file;
+<pattern> a grep pattern. Commands assume the shell
+integration is *not* needed unless they say so.
+
+FIRST CONTACT (chapters 3-4)
+--------------------------------------------------------------------
+  sudo apt install fzf             # or the project's installer
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install                   # installer: binary + offers setup
+  fzf --version
+
+  find . -type f | fzf             # the window over the tree
+  find . -type f | sort | fzf --filter=<query>
+                                   # the same search, no window:
+                                   # matches printed, best first
+
+THE QUERY LANGUAGE (chapters 2 and 4)
+--------------------------------------------------------------------
+  report          fuzzy: letters in order, anywhere in the line
+  'report         exact: the letters side by side (substring)
+  ^annual         the line starts with it (the WHOLE line)
+  2024$           the line ends with it
+  !mp3            the line does NOT contain it
+  report | recipe either side may fit (or)
+  annual 2024     both pieces must fit the same line (and)
+
+  Case: all-lower-case query matches any case; one capital
+  makes the query case-sensitive ("smart case"). --exact,
+  --ignore-case and --no-ignore-case are the manual overrides.
+
+FINDING FILES (chapter 5)
+--------------------------------------------------------------------
+  find . -type f | fzf                       # all files
+  find . -type f -name '*.mp3' | fzf         # feeder pre-filters
+  find . -type d | fzf                       # folders
+  find . -type f | fzf --filter='documents invoice'
+                                             # words from folder
+                                             # AND name
+  find . -type f | fzf --delimiter / --nth -1
+                                             # match the NAME
+                                             # alone (last field)
+
+HISTORY AND CONTENTS (chapters 6-7)
+--------------------------------------------------------------------
+  Ctrl-R          after chapter 12: search history, choice is
+                  placed on the command line, not run
+  Ctrl-T          insert a chosen file's name at the cursor
+  Alt-C           change into a chosen folder
+
+  history | fzf                            # the widget, by hand
+  grep -rin <pattern> . | fzf              # lines that contain
+                                           # it (file:number:text)
+  grep -rin <pattern> . | fzf --filter=<word>
+                                           # -i matters: what the
+                                           # feeder skips, fzf
+                                           # never sees (t90)
+
+IN SCRIPTS (chapter 8)
+--------------------------------------------------------------------
+  fzf --filter=<query>             matches out, then exit
+  fzf --filter=<query> --print-query
+                                   query printed as line one,
+                                   THEN the matches (even none)
+  exit codes: 0 matched · 1 no match (also empty list, and
+  also with --exit-0: measured) · 2 bad option · 130 Esc/Ctrl-C
+  in the window (documented)
+
+  choice=$(... | fzf --filter="$q" | head -n 1)
+  [ -z "$choice" ] && exit 1       # nothing matched: an answer,
+                                   # handled, not a crash
+  cat "$choice"                    # quoted, always; never eval
+
+PREVIEWS AND MANY CHOICES (chapters 9-10)
+--------------------------------------------------------------------
+  fzf --preview 'cat {}'           {} = the highlighted line,
+                                   quoted; {q} the query,
+                                   {+} the chosen lines,
+                                   {1} the first field
+  fzf --preview-window=down:40%:wrap
+  fzf -m                           multi-select: Tab toggles,
+                                   Enter prints the marked lines
+  fzf --multi --filter=<query>     prints EVERY match instead
+  fzf --multi --print0 | xargs -0 echo rm
+                                   read it, THEN drop the echo
+
+DEFAULTS (chapters 11-12)
+--------------------------------------------------------------------
+  FZF_DEFAULT_OPTS='--layout=reverse --height=40%'
+                                   read by every run; the
+                                   command line still wins
+  FZF_DEFAULT_COMMAND='find . -type f'
+                                   the standing feeder (used
+                                   when input is a terminal)
+  eval "$(fzf --bash)"             in ~/.bashrc; --zsh, --fish
+                                   likewise: Ctrl-R/T, Alt-C
+  FZF_CTRL_T_OPTS="--preview 'cat {}'"
+                                   per-widget options

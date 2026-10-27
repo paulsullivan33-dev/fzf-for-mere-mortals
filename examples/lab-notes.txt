@@ -1,0 +1,78 @@
+The lab — one real binary, one invented tree, nobody else's files
+====================================================================
+
+The lab is fzf as the project ships it, run on the
+build machine (an Ubuntu 24.04 sandbox, 2 CPUs,
+7.7 GB RAM, bash 5.2):
+
+  * fzf 0.74.5, the project's official release binary
+    for Linux amd64, unpacked into the sandbox. The
+    package manager was locked by another process for
+    the whole lab, so apt never got its turn; the
+    binary is the same build the installer of
+    chapter 3 would have fetched.
+  * A practice tree built for the guide
+    (fzf-lab/build-sample-tree.sh rebuilds it exactly):
+    27 files in 3 folders — documents/ (14 invented
+    texts: two annual reports, two budgets, two
+    meeting notes, a letter, two recipes, a shopping
+    list, a holiday plan, two invoices, a readme),
+    music/ (8 song names), photos/ (5 photo names).
+    File contents are two to four lines each; three
+    documents mention cinnamon, one of them with a
+    capital C — on purpose, as t90 shows.
+  * Every measured claim was made through fzf's
+    scriptable face (--filter and friends), because
+    printed output can be kept and checked. The lab's
+    shell history, for chapter 6, is the sandbox's
+    own; the history widget itself was verified
+    present, not exercised by keystroke.
+
+Transcripts (fzf-lab/transcripts/)
+--------------------------------------------------------------------
+  t00-version.txt            version; the tree's count
+  t01-first-filter.txt       report / anrp / 2024, score order
+  t02-query-syntax.txt       anchors, $, !, |, and, smart case
+  t03-finding-files.txt      folder+name words, --nth -1
+  t04-print-query-and-env.txt
+                             --print-query, FZF_DEFAULT_OPTS
+                             changing a result, the standing
+                             feeder under a pseudo-terminal
+  t05-multi-select.txt       --multi output, --print0
+  t06-exit-codes.txt         0, 1, 1, 1, 1, 2 — in that order
+  t07-grep-feeder.txt        grep -rin, picked two ways
+  t08-act-on-choice.txt      both lab scripts, all outcomes
+  t09-shell-integration.txt  the 939-line script, the widgets
+  t10-preview.txt            --preview in filter mode; the
+                             command itself, run by hand
+  t90-the-case-trap.txt      the lab's own stumble, kept
+
+Exit codes in transcripts are printed as "[exit N]"
+lines by the capture harness immediately after the
+command that produced them.
+
+What the lab could not do
+--------------------------------------------------------------------
+  * Drive the interactive window. The sandbox has no
+    terminal a person can type into for the record,
+    so the window, its keys, the preview pane and
+    Ctrl-R / Ctrl-T / Alt-C are taught from the
+    project's documentation and the integration
+    script — and labelled documented-only in
+    criteria.md wherever they appear.
+  * Press Esc in a window, so exit 130 is documented,
+    not measured.
+  * Install through apt (locked), or on Windows or
+    macOS at all. Chapter 3 teaches those routes from
+    the project's documentation.
+
+The stumble worth keeping
+--------------------------------------------------------------------
+The first feeder for chapter 7 was written without
+grep's -i. The shopping list writes "Cinnamon" with a
+capital C, so grep printed two lines instead of
+three, and an fzf search for "shopping" then exited 1
+on a line it had never been given. The guide teaches
+the fix (-i) and keeps the failure as t90, because
+"the feeder decides the universe" is easier to
+believe with the evidence attached.

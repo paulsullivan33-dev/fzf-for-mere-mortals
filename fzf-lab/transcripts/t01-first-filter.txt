@@ -1,0 +1,40 @@
+$ find . -type f | sort
+./documents/annual-report-2023.txt
+./documents/annual-report-2024.txt
+./documents/budget-2024.txt
+./documents/budget-2025.txt
+./documents/holiday-plan.txt
+./documents/invoice-1042.txt
+./documents/invoice-1043.txt
+./documents/letter-to-the-library.txt
+./documents/meeting-notes-april.txt
+./documents/meeting-notes-march.txt
+./documents/readme.txt
+./documents/recipe-pancakes.txt
+./documents/recipe-tomato-soup.txt
+./documents/shopping-list.txt
+./music/dancing-in-the-kitchen.mp3
+./music/highway-lights.mp3
+./music/midnight-train.mp3
+./music/quiet-river.mp3
+./music/rain-on-the-roof.mp3
+./music/song-for-a-winter-morning.mp3
+./music/summer-postcard.mp3
+./music/the-blue-door.mp3
+./photos/birthday-cake.jpg
+./photos/cat-on-the-porch.jpg
+./photos/garden-in-may.jpg
+./photos/sunset-over-the-bay.jpg
+./photos/the-old-bridge.jpg
+$ find . -type f | sort | fzf --filter=report
+./documents/annual-report-2023.txt
+./documents/annual-report-2024.txt
+$ find . -type f | sort | fzf --filter=anrp
+./documents/annual-report-2023.txt
+./documents/annual-report-2024.txt
+./music/song-for-a-winter-morning.mp3
+./music/rain-on-the-roof.mp3
+./photos/cat-on-the-porch.jpg
+$ find . -type f | sort | fzf --filter=2024
+./documents/budget-2024.txt
+./documents/annual-report-2024.txt
